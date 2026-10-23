@@ -252,12 +252,16 @@ footer a{color:var(--lemon)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* map */
+.map-card{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow-lg);overflow:hidden;line-height:0}
+.map-card iframe{display:block;width:100%;height:clamp(380px,60vh,560px);border:0}
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="主選單"><div class="nav-in">
   <a class="nav-brand" href="#top"><span class="dot" aria-hidden="true"></span>Good Chia! <span style="font-weight:500;opacity:.7">Vol.001</span></a>
-  <div class="nav-links"><a href="#preview">翻翻看</a><a href="#inside-h">書裡有什麼</a><a href="#buy">購買資訊</a><a href="#faq-h">購書須知</a></div>
+  <div class="nav-links"><a href="#preview">翻翻看</a><a href="#inside-h">書裡有什麼</a><a href="#where">哪裡買得到</a><a href="#buy">購買資訊</a><a href="#faq-h">購書須知</a></div>
   <a class="btn solid js-form" href="#">我要購買</a>
 </div></nav>
 
@@ -378,6 +382,19 @@ footer a{color:var(--lemon)}
       <li>要來嘉義旅行，想吃點雞肉飯以外的東西。</li>
       <li>喜歡地方刊物、飲食文化與日常生活紀錄。</li>
     </ul>
+  </div>
+</section>
+
+<section class="where" id="where" aria-labelledby="where-h">
+  <div class="wrap split">
+    <header>
+      <p class="eyebrow">WHERE</p><h2 id="where-h">哪裡買得到</h2>
+      <p class="lede">想直接去書店帶一本回家，或先到店裡翻翻看，都可以看這張地圖。寄售店和翻閱點會陸續增加，地圖會持續更新。</p>
+      <div class="actions" style="margin-top:24px"><a class="btn line" href="https://www.google.com/maps/d/viewer?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" target="_blank" rel="noopener">在 Google 地圖開啟 <span class="arr" aria-hidden="true">↗</span></a></div>
+    </header>
+    <div class="map-card">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" title="《好嘉伙》小誌寄售地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </div>
 </section>
 
