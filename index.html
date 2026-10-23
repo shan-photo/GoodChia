@@ -57,6 +57,7 @@ h2{font-family:"Huninn","Noto Sans TC",sans-serif;font-weight:400;font-size:clam
 .nav-links a{text-decoration:none;font-weight:500;font-size:.95rem;padding:8px 14px;border-radius:999px;transition:background .2s}
 .nav-links a:hover{background:var(--sky-pale)}
 .nav .btn{margin-left:auto;min-height:44px;padding:8px 20px;font-size:.95rem}
+@media (max-width:859px){.nav .btn{display:none}}
 @media (min-width:860px){.nav-links{display:flex}.nav .btn{margin-left:8px}}
 
 /* buttons */
@@ -90,13 +91,13 @@ h2{font-family:"Huninn","Noto Sans TC",sans-serif;font-weight:400;font-size:clam
 .cover{position:relative;width:min(100%,440px);border:3px solid var(--ink);border-radius:6px;box-shadow:var(--shadow-lg);transform:rotate(4deg);transition:transform .4s cubic-bezier(.2,.8,.2,1);perspective:1400px;background:#fff}
 .cover-wrap:hover .cover{transform:rotate(0) translateY(-6px)}
 .cover-img{width:100%;border-radius:3px}
-.flap{position:absolute;left:52.1%;top:42.8%;width:47.9%;height:33.7%;padding:0;border:0;background:none;cursor:pointer;transform-origin:50% 0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.4,1);z-index:2}
+.flap{position:absolute;left:52.1%;top:42.8%;width:47.9%;height:33.7%;padding:0;border:0;background:none;cursor:pointer;transform-origin:100% 50%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.3,.4,1);z-index:2}
 .flap .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
 .flap .front img{width:100%;height:100%;object-fit:cover;display:block}
 .flap .front{box-shadow:-6px 8px 14px -6px rgba(0,0,0,.45)}
-.flap .back{transform:rotateX(180deg);background:#DDF3FA;background-image:radial-gradient(#48BCE4 28%,transparent 30%);background-size:12px 12px;border:2px solid var(--ink)}
-.flap:hover{transform:rotateX(22deg)}
-.flap[aria-pressed="true"]{transform:rotateX(118deg)}
+.flap .back{transform:rotateY(180deg);background:#DDF3FA;background-image:radial-gradient(#48BCE4 28%,transparent 30%);background-size:12px 12px;border:2px solid var(--ink)}
+.flap:hover{transform:rotateY(24deg)}
+.flap[aria-pressed="true"]{transform:rotateY(120deg)}
 .flap:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 .flap-hint{position:absolute;right:-10px;bottom:-20px;z-index:3;font-family:"Huninn",sans-serif;font-size:.9rem;background:var(--lemon);border:2.5px solid var(--ink);border-radius:999px;padding:4px 14px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg);transition:opacity .3s}
 .flap[aria-pressed="true"]~.flap-hint{opacity:0}
@@ -245,7 +246,7 @@ footer a{color:var(--lemon)}
 .bar .info{font-size:.85rem;line-height:1.3;color:var(--muted)}
 .bar .info b{display:block;color:var(--orange);font-size:1.2rem;font-family:"Fredoka",sans-serif;font-weight:600}
 .bar .btn{min-height:46px;padding:8px 22px;box-shadow:none}
-.bar{display:none!important}
+
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
 
 /* scroll reveal */
@@ -254,14 +255,60 @@ footer a{color:var(--lemon)}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* map */
+.where{background:var(--sky-pale);border-top:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink)}
 .map-card{background:var(--paper);border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow-lg);overflow:hidden;line-height:0}
 .map-card iframe{display:block;width:100%;height:clamp(380px,60vh,560px);border:0}
+
+/* ebook */
+.ebook{padding:72px 0}
+.ebook-card{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:center;background:var(--lemon);border:2.5px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:36px 32px;position:relative;overflow:hidden}
+.ebook-card::after{content:"";position:absolute;right:-40px;bottom:-40px;width:220px;height:220px;border-radius:50%;background-image:radial-gradient(var(--orange) 30%,transparent 32%);background-size:14px 14px;opacity:.35;pointer-events:none}
+.ebook-card h2{margin-bottom:10px}
+.ebook-card .lede{color:var(--ink)}
+.ebook-card .actions{position:relative;z-index:1}
+@media (min-width:900px){.ebook-card{grid-template-columns:minmax(0,1fr) auto;padding:44px 52px}}
+
+/* emphasis */
+strong{font-weight:700;color:var(--ink);background:linear-gradient(transparent 60%,rgba(255,228,92,.9) 0);padding:0 2px}
+.ebook-card strong,.steps li.calc-step strong{background:linear-gradient(transparent 60%,rgba(238,117,34,.35) 0)}
+.for-list strong{background:none;padding:0}
+/* price tiles */
+.price-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pt{background:var(--paper);border:2.5px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink);padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.pt-l{font-family:"Huninn",sans-serif;font-size:.9rem;color:var(--muted)}
+.pt b{font-family:"Fredoka",sans-serif;font-weight:600;font-size:2rem;line-height:1.15;color:var(--ink)}
+.pt b.pt-sm{font-family:"Huninn",sans-serif;font-weight:400;font-size:1.45rem;line-height:1.5}
+.pt small{font-size:.85rem;color:var(--muted)}
+.pt-main{grid-column:1/-1;background:var(--orange);color:#fff;flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 14px}
+.pt-main .pt-l,.pt-main small{color:#fff}
+.pt-main b{color:#fff;font-size:clamp(2.6rem,5vw,3.4rem)}
+@media (max-width:699px){.price-tiles .pt:last-child{grid-column:1/-1}}
+@media (min-width:700px){.price-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.pt-main{grid-column:1/-1}}
+.quick{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
+.quick-l{font-family:"Huninn",sans-serif;font-size:.92rem;color:var(--muted);margin-right:4px}
+.chip{font:inherit;font-size:.95rem;cursor:pointer;background:var(--bg);color:var(--ink);border:2.5px solid var(--ink);border-radius:999px;padding:6px 14px;min-height:44px;box-shadow:3px 3px 0 var(--ink);transition:transform .12s,box-shadow .12s,background .15s}
+.chip b{font-family:"Fredoka",sans-serif;font-weight:600;color:var(--orange);margin-left:4px}
+.chip:hover{background:var(--lemon)}
+.chip:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.chip.on{background:var(--ink);color:var(--bg)}
+.chip.on b{color:var(--lemon)}
+/* floating buy button */
+.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:var(--orange);color:#fff;border:2.5px solid var(--ink);border-radius:999px;box-shadow:5px 5px 0 var(--ink);padding:8px 22px 8px 8px;font-family:"Huninn",sans-serif;font-size:1.05rem;transform:translateY(140%);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s,box-shadow .15s}
+.fab.show{transform:none;opacity:1;pointer-events:auto}
+.fab.show:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.fab.show:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.fab-price{font-family:"Fredoka",sans-serif;font-weight:600;background:var(--lemon);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:1rem}
+.fab .arr{transition:transform .2s}
+.fab:hover .arr{transform:translateX(4px)}
+@media (prefers-reduced-motion:reduce){.fab{transition:opacity .2s}}
+@media (max-width:420px){.fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));font-size:1rem;padding-right:18px}}
+footer{padding-bottom:110px}
 </style>
 </head>
 <body>
 <nav class="nav" aria-label="主選單"><div class="nav-in">
   <a class="nav-brand" href="#top"><span class="dot" aria-hidden="true"></span>Good Chia! <span style="font-weight:500;opacity:.7">Vol.001</span></a>
-  <div class="nav-links"><a href="#preview">翻翻看</a><a href="#inside-h">書裡有什麼</a><a href="#where">哪裡買得到</a><a href="#buy">購買資訊</a><a href="#faq-h">購書須知</a></div>
+  <div class="nav-links"><a href="#preview">翻翻看</a><a href="#inside-h">書裡有什麼</a><a href="#buy">線上訂購</a><a href="#where">寄售書店</a><a href="#ebook">電子書</a></div>
   <a class="btn solid js-form" href="#">我要購買</a>
 </div></nav>
 
@@ -298,7 +345,7 @@ footer a{color:var(--lemon)}
 </svg>
 </div>
       <h1>《好嘉伙》Vol.001　嘉義人的一日三餐</h1>
-      <p class="intro">一本關於「嘉義人怎麼在嘉義生活」的飲食小誌。我訪問了八位在嘉義生活的人，從住了六十年的辦桌總鋪師，到剛搬來半年的咖啡店店員，記錄他們去哪裡買菜、一天三餐吃什麼，以及各自拿手的一道菜。</p>
+      <p class="intro">一本關於<strong>「嘉義人怎麼在嘉義生活」</strong>的飲食小誌。我訪問了<strong>八位在嘉義生活的人</strong>，從住了六十年的辦桌總鋪師，到剛搬來半年的咖啡店店員，記錄他們<strong>去哪裡買菜、一天三餐吃什麼</strong>，以及各自拿手的一道菜。</p>
       <div class="price">
         <span class="now"><small>售價</small>NT$300</span>
       </div>
@@ -316,7 +363,7 @@ footer a{color:var(--lemon)}
 <span class="face front"><img src="data:image/jpeg;base64,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" alt=""></span>
 <span class="face back" aria-hidden="true"></span>
 </button>
-<span class="flap-hint" aria-hidden="true">點藍色方塊翻開 ↑</span>
+<span class="flap-hint" aria-hidden="true">點藍色方塊翻開 →</span>
 </div>
     </div>
   </header>
@@ -328,9 +375,9 @@ footer a{color:var(--lemon)}
   <div class="wrap split">
     <header><p class="eyebrow">WHY</p><h2 id="why-h">為什麼做這本書</h2></header>
     <div class="card">
-      <p>大學畢業後我在臺南工作，那幾年因為寫專欄，偶爾會跑到嘉義採訪。很魔幻的是，明明到處採訪，回想起來，我對嘉義的印象裡幾乎沒有旅遊地標，想得起來的，全是一些臺南不常見的美味：煎粿、網絲肉捲、各種風格的咖啡店、加了很多配料的冰。</p>
-      <p>今年我得到一個機會住進嘉義。一開始只是想收集好吃的店，慢慢擴充自己的嘉義美味資料庫，於是開始問遇見的人：你都去哪裡買菜？一日三餐都吃些什麼？</p>
-      <p>後來，這本小誌就長成了現在的樣子。它記錄的是我在嘉義的新朋友們，一些好好吃飯、認真生活的酷嘉伙們。</p>
+      <p>大學畢業後我在臺南工作，那幾年因為寫專欄，偶爾會跑到嘉義採訪。很魔幻的是，明明到處採訪，回想起來，我對嘉義的印象裡幾乎沒有旅遊地標，想得起來的，<strong>全是一些臺南不常見的美味</strong>：煎粿、網絲肉捲、各種風格的咖啡店、加了很多配料的冰。</p>
+      <p>今年我得到一個機會住進嘉義。一開始只是想收集好吃的店，慢慢擴充自己的嘉義美味資料庫，於是開始問遇見的人：<strong>你都去哪裡買菜？一日三餐都吃些什麼？</strong></p>
+      <p>後來，這本小誌就長成了現在的樣子。它記錄的是我在嘉義的新朋友們，一些<strong>好好吃飯、認真生活的酷嘉伙們</strong>。</p>
       <p class="sign">珊 Aasta（吳佩珊）</p>
     </div>
   </div>
@@ -373,44 +420,56 @@ footer a{color:var(--lemon)}
   </div>
 </section>
 
+<section aria-labelledby="meta-h">
+  <div class="wrap split">
+    <header><p class="eyebrow">INFO</p><h2 id="meta-h">書籍資料</h2></header>
+    <div>
+      <dl class="meta">
+        <dt>書名</dt><dd>好嘉伙 Vol.001　嘉義人的一日三餐</dd>
+        <dt>規格</dt><dd>B5，32 頁，裸背穿線，數位印刷</dd>
+        <dt>作者・攝影</dt><dd>珊 Aasta（吳佩珊）</dd>
+        <dt>插畫</dt><dd>日召設計 Clear Design</dd>
+        <dt>編排設計</dt><dd>力口工作室 Lico_Studio_</dd>
+        <dt>出版</dt><dd>2026 年 10 月出版</dd>
+        <dt>ISBN</dt><dd>978-626-01-7115-5</dd>
+      </dl>
+      <p class="lede" style="margin-top:24px">本刊由嘉義市政府「115 年二地居－游牧者（Nomads）計畫」支持。</p>
+    </div>
+  </div>
+</section>
+
 <section class="who-for" aria-labelledby="for-h">
   <div class="wrap split">
     <header><p class="eyebrow">FOR YOU</p><h2 id="for-h">適合這樣的你</h2></header>
     <ul class="for-list">
-      <li>住在嘉義，想知道鄰居們都去哪裡買菜、吃什麼。</li>
-      <li>剛搬來或正在考慮搬來嘉義，需要一份在地人的生活指南。</li>
-      <li>要來嘉義旅行，想吃點雞肉飯以外的東西。</li>
-      <li>喜歡地方刊物、飲食文化與日常生活紀錄。</li>
+      <li><strong>住在嘉義</strong>，想知道鄰居們都去哪裡買菜、吃什麼。</li>
+      <li><strong>剛搬來或正在考慮搬來嘉義</strong>，需要一份在地人的生活指南。</li>
+      <li><strong>要來嘉義旅行</strong>，想吃點雞肉飯以外的東西。</li>
+      <li><strong>喜歡地方刊物、飲食文化與日常生活紀錄</strong>。</li>
     </ul>
-  </div>
-</section>
-
-<section class="where" id="where" aria-labelledby="where-h">
-  <div class="wrap split">
-    <header>
-      <p class="eyebrow">WHERE</p><h2 id="where-h">哪裡買得到</h2>
-      <p class="lede">想直接去書店帶一本回家，或先到店裡翻翻看，都可以看這張地圖。寄售店和翻閱點會陸續增加，地圖會持續更新。</p>
-      <div class="actions" style="margin-top:24px"><a class="btn line" href="https://www.google.com/maps/d/viewer?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" target="_blank" rel="noopener">在 Google 地圖開啟 <span class="arr" aria-hidden="true">↗</span></a></div>
-    </header>
-    <div class="map-card">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" title="《好嘉伙》小誌寄售地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
   </div>
 </section>
 
 <section id="buy" aria-labelledby="buy-h">
   <div class="wrap split">
     <header>
-      <p class="eyebrow">HOW TO BUY</p><h2 id="buy-h">購買資訊</h2>
-      <p class="lede">每本 NT$300。緊急加印中，下一次出貨日是 11/15，感謝大家的等待 ♡</p>
+      <p class="eyebrow">ORDER ONLINE</p><h2 id="buy-h">線上訂購</h2>
+      <p class="lede">緊急加印中，<strong>下一次出貨日 11/15</strong>，感謝大家的等待 ♡</p>
+      <p class="lede" style="margin-top:14px">想直接到店裡買？<a href="#where" style="color:var(--orange);font-weight:700">看寄售地圖 ↓</a><br>想看電子書？<a href="#ebook" style="color:var(--orange);font-weight:700">電子版在這裡 ↓</a></p>
     </header>
     <div class="buy-grid">
-      <dl class="facts">
-        <dt>售價</dt><dd><b>NT$300</b></dd>
-        <dt>取書方式</dt><dd>統一郵寄，運費 60 元</dd>
-        <dt>付款方式</dt><dd>銀行轉帳（匯款帳號詳見表單）</dd>
-        <dt>出貨時間</dt><dd>緊急加印中，下一次出貨日是 11/15</dd>
-      </dl>
+      <div class="price-tiles">
+        <div class="pt pt-main"><span class="pt-l">每本</span><b>NT$300</b><small>紙本・B5・32 頁</small></div>
+        <div class="pt"><span class="pt-l">郵寄運費</span><b>+60</b><small>統一郵寄</small></div>
+        <div class="pt"><span class="pt-l">下一次出貨</span><b>11/15</b><small>緊急加印中</small></div>
+        <div class="pt"><span class="pt-l">付款方式</span><b class="pt-sm">銀行轉帳</b><small>帳號在訂購表單上</small></div>
+      </div>
+      <div class="quick">
+        <span class="quick-l">常見金額（含運）</span>
+        <button type="button" class="chip" data-qty="1">1 本 <b>NT$360</b></button>
+        <button type="button" class="chip" data-qty="2">2 本 <b>NT$660</b></button>
+        <button type="button" class="chip" data-qty="3">3 本 <b>NT$960</b></button>
+      </div>
       <div>
         <h3 class="buy-h3">怎麼購買</h3>
         <ol class="steps">
@@ -437,9 +496,9 @@ footer a{color:var(--lemon)}
               </div>
             </div>
           </li>
-          <li><b>轉帳</b><p>帳號在訂購表單上，轉帳後記下帳號後五碼。</p></li>
+          <li><b>轉帳</b><p>帳號在訂購表單上，轉帳後記下<strong>帳號後五碼</strong>。</p></li>
           <li><b>填訂購表單</b><p>姓名、手機、本數、收件地址與後五碼，大約一分鐘。</p></li>
-          <li><b>收到確認</b><p>確認收款後傳訊息通知你，一週內完成對帳，書會在 11/15 統一寄出。</p></li>
+          <li><b>收到確認</b><p>確認收款後傳訊息通知你，一週內完成對帳，書會在 <strong>11/15 統一寄出</strong>。</p></li>
         </ol>
         <div class="actions" style="margin-top:36px"><a class="btn solid js-form" href="#">前往訂購表單 <span class="arr" aria-hidden="true">→</span></a></div>
       </div>
@@ -447,34 +506,28 @@ footer a{color:var(--lemon)}
   </div>
 </section>
 
-<section aria-labelledby="faq-h" style="padding-top:0">
+<section class="where" id="where" aria-labelledby="where-h">
   <div class="wrap split">
     <header>
-      <p class="eyebrow">FAQ</p><h2 id="faq-h">購書須知</h2>
-      <p class="lede">有其他問題，歡迎來信或私訊。</p>
+      <p class="eyebrow">IN STORE</p><h2 id="where-h">去書店帶一本</h2>
+      <p class="lede">不想等寄送的話，這些書店有寄售，<strong>可以直接買回家</strong>；也有幾間店放了<strong>可以翻閱</strong>的《好嘉伙》，歡迎先去看看。寄售點會陸續增加，地圖會隨時更新。</p>
+      <div class="actions" style="margin-top:24px"><a class="btn line" href="https://www.google.com/maps/d/viewer?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" target="_blank" rel="noopener">在 Google 地圖開啟 <span class="arr" aria-hidden="true">↗</span></a></div>
     </header>
-    <div>
-      <details><summary>運費怎麼算？</summary><div class="body"><p>統一郵寄，運費 60 元，由訂購者負擔。1 本 360 元、2 本 660 元。</p></div></details>
+    <div class="map-card">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1WPQbWnUbqu22KeqKjXrrxoR3BNeWv4Q" title="《好嘉伙》小誌寄售地圖" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 </section>
 
-<section aria-labelledby="meta-h" style="padding-top:0">
-  <div class="wrap split">
-    <header><p class="eyebrow">INFO</p><h2 id="meta-h">書籍資料</h2></header>
-    <div>
-      <dl class="meta">
-        <dt>書名</dt><dd>好嘉伙 Vol.001　嘉義人的一日三餐</dd>
-        <dt>規格</dt><dd>B5，32 頁，裸背穿線，數位印刷</dd>
-        <dt>作者・攝影</dt><dd>珊 Aasta（吳佩珊）</dd>
-        <dt>插畫</dt><dd>日召設計 Clear Design</dd>
-        <dt>編排設計</dt><dd>力口工作室 Lico_Studio_</dd>
-        <dt>印刷</dt><dd>基盛印刷工廠</dd>
-        <dt>協力</dt><dd>嘉義異鄉人、劉雯婷</dd>
-        <dt>出版</dt><dd>吳佩珊，2026 年 10 月初版</dd>
-        <dt>ISBN</dt><dd>978-626-01-7115-5</dd>
-      </dl>
-      <p class="lede" style="margin-top:24px">本刊由嘉義市政府「115 年二地居－游牧者（Nomads）計畫」支持。</p>
+<section class="ebook" id="ebook" aria-labelledby="ebook-h">
+  <div class="wrap">
+    <div class="ebook-card">
+      <div>
+        <p class="eyebrow">E-BOOK</p>
+        <h2 id="ebook-h">也有電子書</h2>
+        <p class="lede">等不及 11/15、或想隨身帶著看？《好嘉伙》Vol.001 電子版已在 Pubu 電子書城上架，<strong>買了馬上就能讀</strong>。</p>
+      </div>
+      <div class="actions"><a class="btn solid" href="https://www.pubu.com.tw/magazine/701267" target="_blank" rel="noopener">到 Pubu 買電子書 <span class="arr" aria-hidden="true">↗</span></a></div>
     </div>
   </div>
 </section>
@@ -520,10 +573,7 @@ footer a{color:var(--lemon)}
   </div>
 </footer>
 
-<div class="bar" id="bar" aria-hidden="true">
-  <span class="info"><b>NT$300</b>11/15 統一寄出</span>
-  <a class="btn solid js-form" href="#" tabindex="-1">我要購買</a>
-</div>
+<a class="fab js-form" id="fab" href="#"><span class="fab-price">NT$300</span><span class="fab-label">我要購買</span><span class="arr" aria-hidden="true">→</span></a>
 
 <script>
 /* 換成正式連結即可 */
@@ -556,11 +606,25 @@ wire(".js-form",FORM_URL,"訂購表單即將開放");
   calc();
 })();
 
-/* sticky bar after hero */
+/* floating buy button: show after hero, hide at closing CTA */
 (function(){
-  const bar=document.getElementById("bar"), hero=document.getElementById("top");
-  if(!("IntersectionObserver" in window)){bar.classList.add("show");return;}
-  new IntersectionObserver(e=>{bar.classList.toggle("show",!e[0].isIntersecting)}).observe(hero);
+  const fab=document.getElementById("fab"), hero=document.getElementById("top"), end=document.querySelector(".closing");
+  if(!fab)return;
+  if(!("IntersectionObserver" in window)){fab.classList.add("show");return;}
+  let pastHero=false, atEnd=false;
+  const upd=()=>fab.classList.toggle("show",pastHero&&!atEnd);
+  new IntersectionObserver(e=>{pastHero=!e[0].isIntersecting;upd();}).observe(hero);
+  if(end)new IntersectionObserver(e=>{atEnd=e[0].isIntersecting;upd();},{threshold:.25}).observe(end);
+})();
+
+/* quick amount chips -> calculator */
+(function(){
+  const q=document.getElementById("qty");
+  document.querySelectorAll(".chip[data-qty]").forEach(c=>c.addEventListener("click",()=>{
+    q.value=c.dataset.qty; q.dispatchEvent(new Event("input"));
+    document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===c));
+    document.getElementById("calc").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+  }));
 })();
 
 /* flipbook */
